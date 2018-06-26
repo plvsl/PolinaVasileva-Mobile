@@ -1,0 +1,33 @@
+
+1.	Setup project that has been discussed in the class. Make sure you can run both tests (native and web)
+successfully.
+
+Both tests run successfully.
+
+2.	For existing native mobile autotest try to use another locator (xpath, classname, ?). Define these
+locators using Appium Inspector. Are there any difference with id version?
+
+className allows to write the locator with shortest name.
+
+3.	Modify existing tests to run on a real device. What should be changed?
+
+In DriverSetup we need to change "deviceName" in DesiredCapabilities.
+
+4.	Connect a real device to Appium (describe required actions) and run tests. Are there any difference with run
+on emulator?
+
+It depends on a emulator and the machine which run that emulator. In my case real device was faster, but it required
+some more manipulations as accessing some permissions. We can see all actions on the screen
+but they are quite fast for human eyes
+
+5.	What should be improved/changed in existing test code? Why, for what?
+
+-We need to move all hardcoded values into specific property files to have possibility without changing code change for
+example device
+-We shouldn't use absolute paths because it can cause failures on other computers
+-It is strictly prohibited to use Thread.sleep. We need to use WebDriverWait instead
+-We need to refactor structure of our testing framework to separate tests logic and setting for starting it up
+-Now it is not clear for a newby(who will look at our code for a first time) what is really happening so we need
+some more descriptions, comments and docs
+-We don't have framework as it should be presented. Our buttons are initialisation right in the test and it is wrong way
+-We don't have any asserts and we don't expect any behaviour after doing any stuff so now it is not even test.
