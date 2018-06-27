@@ -1,4 +1,4 @@
-package ex2.scenarios;
+package scenarios;
 
 import org.openqa.selenium.By;
 import org.testng.annotations.AfterClass;
