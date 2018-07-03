@@ -7,6 +7,6 @@ public enum PropertyFile {
     public String value;
 
     PropertyFile(String value) {
-        this.value = value;
+        this.value = "src\\main\\resources\\" + value;
     }
 }
