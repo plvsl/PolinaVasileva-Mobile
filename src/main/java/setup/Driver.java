@@ -1,16 +1,12 @@
 package setup;
 
 
-import com.sun.xml.internal.bind.v2.TODO;
 import enums.PropertyFile;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
