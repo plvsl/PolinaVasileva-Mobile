@@ -3,6 +3,8 @@ package setup;
 
 import enums.PropertyFile;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -78,14 +80,21 @@ public class Driver extends TestProperties {
                 case "iOS":
                     capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Safari");
                     break;
-                default:
-                    throw new Exception("Unknown mobile platform");
             }
         } else {
             throw new Exception("Unclear type of mobile app");
         }
         // Init driver for local Appium server with capabilities have been set
-        driverSingle = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+        switch (TEST_PLATFORM) {
+            case "Android":
+                driverSingle = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+                break;
+            case "iOS":
+                driverSingle = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+                break;
+            default:
+                throw new Exception("Unknown mobile platform");
+        }
 
         // Set an object to handle timeouts
         if (waitSingle == null) {
