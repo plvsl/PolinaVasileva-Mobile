@@ -20,12 +20,6 @@ public class FirstSimpleWebTest extends Driver {
         super(PropertyFile.WEB);
     }
 
-    @AfterSuite(groups = {"native","web"}, description = "Close driver on all tests completion")
-    public void tearDown() throws Exception {
-        driver().quit();
-        System.out.println("Driver closed");
-    }
-
     @Test(groups = "web", description = "Open website, check main div blocks and \"Google Search\"")
     public void webTest() throws Exception {
 
