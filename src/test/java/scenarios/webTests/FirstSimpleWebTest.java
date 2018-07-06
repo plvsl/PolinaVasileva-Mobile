@@ -4,9 +4,8 @@ import enums.PropertyFile;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.Test;
-import setup.Driver;
+import setup.Hooks;
 
 import java.io.IOException;
 
@@ -14,7 +13,7 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 @Test(groups = "web")
-public class FirstSimpleWebTest extends Driver {
+public class FirstSimpleWebTest extends Hooks {
 
     protected FirstSimpleWebTest() throws IOException {
         super(PropertyFile.WEB);
@@ -70,5 +69,4 @@ public class FirstSimpleWebTest extends Driver {
 
         System.out.println("All checks are successful and done");
     }
-
 }

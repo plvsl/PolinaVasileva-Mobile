@@ -1,6 +1,5 @@
 package setup;
 
-
 import enums.PropertyFile;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
@@ -17,7 +16,6 @@ public class Driver extends TestProperties {
     private static AppiumDriver driverSingle;
     private static WebDriverWait waitSingle;
 
-
     // Properties to be read
     private String APP; // (mobile) app under testing
     protected String SUT; // site under testing
@@ -25,9 +23,6 @@ public class Driver extends TestProperties {
     private String TEST_PLATFORM_VERSION;
     private String HOST;
     private String DEVICE_NAME;
-
-    Driver() {
-    }
 
     // Constructor initializes properties on driver creation
     protected Driver(PropertyFile propertyFile) throws IOException {
@@ -57,10 +52,6 @@ public class Driver extends TestProperties {
 
     void prepareDriver() throws Exception {
         DesiredCapabilities capabilities = new DesiredCapabilities();
-
-        File file = new File("src\\main\\resources\\chromedriver.exe");
-        capabilities.setCapability("chromedriverExecutableDir", file.getAbsoluteFile().getParent());
-
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, TEST_PLATFORM);
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, DEVICE_NAME);
         capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, TEST_PLATFORM_VERSION);
@@ -71,6 +62,8 @@ public class Driver extends TestProperties {
             File app = new File(APP);
             capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
         } else if (SUT != null && APP == null) {
+            File file = new File("src\\main\\resources\\chromedriver.exe");
+            capabilities.setCapability("chromedriverExecutableDir", file.getAbsoluteFile().getParent());
             // Web
             // Setup test platform: Android or iOS. Browser also depends on a platform.
             switch (TEST_PLATFORM) {
@@ -84,6 +77,7 @@ public class Driver extends TestProperties {
         } else {
             throw new Exception("Unclear type of mobile app");
         }
+
         // Init driver for local Appium server with capabilities have been set
         switch (TEST_PLATFORM) {
             case "Android":
