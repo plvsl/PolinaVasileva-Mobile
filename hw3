@@ -1,11 +1,22 @@
 1.	Rewrite (complete) Driver using “singleton” pattern. Are there any advantages?
 
+There is an advantage of singletone - it allows you to get an existing instance of an object in any place if it is defined or
+define a new one if it is null for some reason.
+
 2.	Suggest improvements for .properties reading. What are the purposes?
+
+I separated properties for native and web applications and implemented logic which helps test framework
+to choose by itself what .property file it should use depending on test.
 
 3.	Add checks of other fields and their titles (Contact Name, Contact phone) in “native” test
 
 4.	Optional: Add keyboard presence check  in “native” test.
 
+I replaced initialisation of AppiumDriver with platform dependent drivers(IOSDriver and AndroidDriver) and
+implemented some logic for helping test framework to chose by itself what driver do we need.
+
 5.	Which checks would you place in the “web” test?
+
+I placed few checks for main page's div blocks, "Google search" textbox and button as a proof of concept.
 
 6.	Implement checks for “web” test in code and try to use.
