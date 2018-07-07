@@ -81,10 +81,10 @@ public class Driver extends TestProperties {
         // Init driver for local Appium server with capabilities have been set
         switch (TEST_PLATFORM) {
             case "Android":
-                driverSingle = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+                driverSingle = new AndroidDriver(new URL(HOST), capabilities);
                 break;
             case "iOS":
-                driverSingle = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+                driverSingle = new IOSDriver(new URL(HOST), capabilities);
                 break;
             default:
                 throw new Exception("Unknown mobile platform");
