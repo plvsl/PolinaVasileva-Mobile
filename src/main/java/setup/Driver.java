@@ -23,6 +23,9 @@ public class Driver extends TestProperties {
     private String TEST_PLATFORM_VERSION;
     private String HOST;
     private String DEVICE_NAME;
+    private String UDID;
+    private String APP_PACKAGE;
+    private String APP_ACTIVITY;
 
     // Constructor initializes properties on driver creation
     protected Driver(PropertyFile propertyFile) throws IOException {
@@ -42,6 +45,9 @@ public class Driver extends TestProperties {
         TEST_PLATFORM_VERSION = getProp("platformVersion");
         HOST = getProp("host");
         DEVICE_NAME = getProp("deviceName");
+        UDID = getProp("udid");
+        APP_PACKAGE = getProp("appPackage");
+        APP_ACTIVITY = getProp("appActivity");
     }
 
     /**
@@ -55,15 +61,18 @@ public class Driver extends TestProperties {
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, TEST_PLATFORM);
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, DEVICE_NAME);
         capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, TEST_PLATFORM_VERSION);
+        capabilities.setCapability(MobileCapabilityType.UDID, UDID);
 
         // Setup type of application: mobile, web (or hybrid)
         if (APP != null && SUT == null) {
             // Native
             File app = new File(APP);
             capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
+            capabilities.setCapability("appPackage", APP_PACKAGE);
+            capabilities.setCapability("appActivity", APP_ACTIVITY);
         } else if (SUT != null && APP == null) {
-            File file = new File("src\\main\\resources\\chromedriver.exe");
-            capabilities.setCapability("chromedriverExecutableDir", file.getAbsoluteFile().getParent());
+            //File file = new File("src\\main\\resources\\chromedriver.exe");
+            //capabilities.setCapability("chromedriverExecutableDir", file.getAbsoluteFile().getParent());
             // Web
             // Setup test platform: Android or iOS. Browser also depends on a platform.
             switch (TEST_PLATFORM) {
