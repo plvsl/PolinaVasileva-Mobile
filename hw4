@@ -1,0 +1,18 @@
+1.	Add support of appPackage and appActivity parameters for Android devices (reading from a .properties file and then
+setting in the DesiredCapabilities). Locally installed Appium DT doesn’t need these parameters, but for Appium server
+of Mobile Farm (Minsk, SPb) it’s mandatory.
+
+2.	Change settings to run web test on a certain iOS device on Mobile Test Farm. Run test with your changes.
+Did test pass?
+
+It hasn't passed because of one(last) assert but i don't have ability to debug it. To run this test I changed
+the selector of element. After that test passed.
+
+3.	Change settings to run native test on a certain/random Android device on Mobile Test Farm.
+ Run test with your changes. Did test pass?
+
+Yes, test passed.
+
+4.	What’s wrong with our code? How to fix/improve it? Implement your suggestions.
+
+Firstly, it was hard to read it because we didn't use page objects, so I fixed that.
