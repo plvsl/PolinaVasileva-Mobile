@@ -5,8 +5,7 @@ of Mobile Farm (Minsk, SPb) it’s mandatory.
 2.	Change settings to run web test on a certain iOS device on Mobile Test Farm. Run test with your changes.
 Did test pass?
 
-It hasn't passed because of one(last) assert but i don't have ability to debug it. To run this test I changed
-the selector of element. After that test passed.
+It hasn't passed because of one(last) assert but i don't have ability to debug it.
 
 3.	Change settings to run native test on a certain/random Android device on Mobile Test Farm.
  Run test with your changes. Did test pass?
