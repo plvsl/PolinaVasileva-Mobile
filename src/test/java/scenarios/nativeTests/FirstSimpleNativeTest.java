@@ -5,6 +5,8 @@ import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
+import pageObjects.nativePnativePageObjects.AddContactPage;
+import pageObjects.nativePnativePageObjects.StartPage;
 import setup.Hooks;
 
 import java.io.IOException;
@@ -24,43 +26,30 @@ public class FirstSimpleNativeTest extends Hooks {
     @Test(groups = "native", description = "Click on button 'Add contact', check that keyboard is presented, " +
             "check main titles and fields of page")
     public void simplestTest() throws Exception {
-        String appPackageName = "com.example.android.contactmanager:id/";
+        StartPage startPage = new StartPage(driver());
+        AddContactPage addContactPage = new AddContactPage(driver());
 
         //Click on "Contact Button"
-        By addBtn = By.className("android.widget.Button");
-        driver().findElement(addBtn).click();
+        startPage.clickAddContactButton();
 
         //Check that keyboard is presented
-        assertTrue(((AndroidDriver) driver()).isKeyboardShown());
+        addContactPage.checkKeyboardShown();
 
         //Check that all fields are displayed
         //Target Account field
-        By targetAccount = By.className("android.widget.Spinner");
-        assertTrue(driver().findElement(targetAccount).isDisplayed());
+        addContactPage.checkTargetAccountField();
 
         //Contact Name field
-        By contactName = By.id(appPackageName + "contactNameEditText");
-        assertTrue(driver().findElement(contactName).isDisplayed());
+        addContactPage.checkContactNameAccountField();
 
         //Contact Phone field
-        By contactPhone = By.id(appPackageName + "contactPhoneEditText");
-        assertTrue(driver().findElement(contactPhone).isDisplayed());
+        addContactPage.checkContactPhoneAccountField();
 
         //Contact Email field
-        By contactEmail = By.id(appPackageName + "contactEmailEditText");
-        assertTrue(driver().findElement(contactEmail).isDisplayed());
+        addContactPage.checkContactEmailAccountField();
 
         //Check that all titles of fields are displayed and have a correct texts
-        By actualTextsBy = By.className("android.widget.TextView");
-        List<WebElement> actualTexts = driver().findElements(actualTextsBy);
-        List<String> expectedTexts = Arrays.asList("Target Account", "Contact Name",
-                "Contact Phone", "Home", "Contact Email", "Home");
-        for (WebElement element : actualTexts) {
-            assertTrue(element.isDisplayed());
-        }
-        for (int i = 0; i < actualTexts.size() - 1; i++) {
-            assertEquals(actualTexts.get(i + 1).getText(), expectedTexts.get(i));
-        }
+        addContactPage.checkFieldsAreDisplayedAndHaveCorrectTexts();
     }
 }
 
