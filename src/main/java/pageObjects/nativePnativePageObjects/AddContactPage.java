@@ -30,19 +30,19 @@ public class AddContactPage {
     }
 
     public void checkTargetAccountField() {
-        assertTrue(driver.findElement(targetAccount).isDisplayed());
+        assertElementDisplayed(targetAccount);
     }
 
     public void checkContactNameAccountField() {
-        assertTrue(driver.findElement(contactName).isDisplayed());
+        assertElementDisplayed(contactName);
     }
 
     public void checkContactPhoneAccountField() {
-        assertTrue(driver.findElement(contactPhone).isDisplayed());
+        assertElementDisplayed(contactPhone);
     }
 
     public void checkContactEmailAccountField() {
-        assertTrue(driver.findElement(contactEmail).isDisplayed());
+        assertElementDisplayed(contactEmail);
     }
 
     public void checkFieldsAreDisplayedAndHaveCorrectTexts() {
@@ -53,7 +53,13 @@ public class AddContactPage {
             assertTrue(element.isDisplayed());
         }
         for (int i = 0; i < actualTexts.size() - 1; i++) {
-            assertEquals(actualTexts.get(i + 1).getText(), expectedTexts.get(i));
+            if (!actualTexts.get(i + 1).getText().contains("gmail")) {
+                assertEquals(actualTexts.get(i + 1).getText(), expectedTexts.get(i));
+            }
         }
+    }
+
+    private void assertElementDisplayed(By element) {
+        assertTrue(driver.findElement(element).isDisplayed());
     }
 }
