@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.testng.Assert.assertTrue;
-import static org.testng.AssertJUnit.assertEquals;
 
 public class AddContactPage {
     private static final String APP_PACKAGE_NAME = "com.example.android.contactmanager:id/";

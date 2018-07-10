@@ -13,7 +13,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
-import static enums.Browser.*;
+import static enums.Browser.CHROME;
+import static enums.Browser.SAFARI;
 
 public class Driver extends TestProperties {
     private static AppiumDriver driverSingle;
