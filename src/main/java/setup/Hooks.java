@@ -26,7 +26,7 @@ public class Hooks extends Driver {
 
     @AfterSuite(groups = {"native", "web"}, description = "Close driver on all tests completion")
     public void tearDown() throws Exception {
-        driver().quit(); //CLOSEAPP ?
+        driver().quit();
         System.out.println("Driver closed");
     }
 }

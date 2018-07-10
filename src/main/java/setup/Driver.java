@@ -1,5 +1,6 @@
 package setup;
 
+import enums.Browser;
 import enums.PropertyFile;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
@@ -77,10 +78,10 @@ public class Driver extends TestProperties {
             // Setup test platform: Android or iOS. Browser also depends on a platform.
             switch (TEST_PLATFORM) {
                 case "Android":
-                    capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
+                    capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, Browser.CHROME);
                     break;
                 case "iOS":
-                    capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Safari");
+                    capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, Browser.SAFARI);
                     break;
             }
         } else {
