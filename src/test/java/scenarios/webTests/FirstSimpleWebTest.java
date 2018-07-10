@@ -1,9 +1,6 @@
 package scenarios.webTests;
 
 import enums.PropertyFile;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.webPageObjects.HomePage;
 import setup.Hooks;
@@ -46,7 +43,7 @@ public class FirstSimpleWebTest extends Hooks {
         homePage.checkRevisedPrivacyPolicyBlock();
 
         //Check that "Google Search" textBox is displayed
-        homePage.checkGoogleSearchTextbox();
+        homePage.checkGoogleSearchTextBox();
 
         //Check that "Google Search" button is displayed
         homePage.checkGoogleSearchButton();
