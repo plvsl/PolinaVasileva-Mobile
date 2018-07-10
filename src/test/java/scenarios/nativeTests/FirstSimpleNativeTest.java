@@ -38,10 +38,13 @@ public class FirstSimpleNativeTest extends Hooks {
         //Check that all fields are displayed
         //Target Account field
         addContactPage.checkTargetAccountField();
+
         //Contact Name field
         addContactPage.checkContactNameAccountField();
+
         //Contact Phone field
         addContactPage.checkContactPhoneAccountField();
+
         //Contact Email field
         addContactPage.checkContactEmailAccountField();
 
