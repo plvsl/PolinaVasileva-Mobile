@@ -54,7 +54,7 @@ public class AddContactPage {
         }
         for (int i = 0; i < actualTexts.size() - 1; i++) {
             if (!actualTexts.get(i + 1).getText().contains("gmail")) {
-                assertEquals(actualTexts.get(i + 1).getText(), expectedTexts.get(i));
+                assertTrue(expectedTexts.contains(actualTexts.get(i + 1).getText()));
             }
         }
     }

@@ -1,6 +1,6 @@
 package setup;
 
-import enums.Browser;
+import enums.Properties;
 import enums.PropertyFile;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
@@ -12,6 +12,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+
+import static enums.Browser.*;
 
 public class Driver extends TestProperties {
     private static AppiumDriver driverSingle;
@@ -34,21 +36,21 @@ public class Driver extends TestProperties {
 
         switch (propertyFile) {
             case NATIVE:
-                APP = getProp("app");
+                APP = getProp(Properties.APP.value);
                 break;
             case WEB:
-                String t_sut = getProp("sut");
+                String t_sut = getProp(Properties.SUT.value);
                 SUT = t_sut == null ? null : "http://" + t_sut;
                 break;
         }
 
-        TEST_PLATFORM = getProp("platformName");
-        TEST_PLATFORM_VERSION = getProp("platformVersion");
-        HOST = getProp("host");
-        DEVICE_NAME = getProp("deviceName");
-        UDID = getProp("udid");
-        APP_PACKAGE = getProp("appPackage");
-        APP_ACTIVITY = getProp("appActivity");
+        TEST_PLATFORM = getProp(Properties.PLATFORM_NAME.value);
+        TEST_PLATFORM_VERSION = getProp(Properties.PLATFORM_VERSION.value);
+        HOST = getProp(Properties.HOST.value);
+        DEVICE_NAME = getProp(Properties.DEVICE_NAME.value);
+        UDID = getProp(Properties.UDID.value);
+        APP_PACKAGE = getProp(Properties.APP_PACKAGE.value);
+        APP_ACTIVITY = getProp(Properties.APP_ACTIVITY.value);
     }
 
     /**
@@ -69,19 +71,21 @@ public class Driver extends TestProperties {
             // Native
             File app = new File(APP);
             capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
+
             capabilities.setCapability("appPackage", APP_PACKAGE);
             capabilities.setCapability("appActivity", APP_ACTIVITY);
         } else if (SUT != null && APP == null) {
             //File file = new File("src\\main\\resources\\chromedriver.exe");
             //capabilities.setCapability("chromedriverExecutableDir", file.getAbsoluteFile().getParent());
+
             // Web
             // Setup test platform: Android or iOS. Browser also depends on a platform.
             switch (TEST_PLATFORM) {
                 case "Android":
-                    capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, Browser.CHROME);
+                    capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, CHROME);
                     break;
                 case "iOS":
-                    capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, Browser.SAFARI);
+                    capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, SAFARI);
                     break;
             }
         } else {

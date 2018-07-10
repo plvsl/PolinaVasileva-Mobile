@@ -41,32 +41,36 @@ public class HomePage {
     }
 
     public void checkDomainNamesBlock() {
-        Assert.assertTrue(driver.findElement(domainName).isDisplayed());
+        assertElementDisplayed(domainName);
     }
 
     public void checkNumberResourcesBlock() {
-        Assert.assertTrue(driver.findElement(numberResources).isDisplayed());
+        assertElementDisplayed(numberResources);
     }
 
     public void checkProtocolAssignmentsBlock() {
-        Assert.assertTrue(driver.findElement(protocolAssignments).isDisplayed());
+        assertElementDisplayed(protocolAssignments);
     }
 
     public void checkRevisedPrivacyPolicyBlock() {
-        Assert.assertTrue(driver.findElement(privacyPolicy).isDisplayed());
+        assertElementDisplayed(privacyPolicy);
     }
 
-    public void checkGoogleSearchTextbox() {
-        Assert.assertTrue(driver.findElement(textBox).isDisplayed());
+    public void checkGoogleSearchTextBox() {
+        assertElementDisplayed(textBox);
     }
 
     public void checkGoogleSearchButton() {
-        Assert.assertTrue(driver.findElement(button).isDisplayed());
+        assertElementDisplayed(button);
     }
 
     public void checkGoogleSearchOverlay() {
         driver.findElement(textBox).sendKeys("EPAM");
         driver.findElement(button).click();
-        Assert.assertTrue(driver.findElement(buttonG).isDisplayed());
+        assertElementDisplayed(buttonG);
+    }
+
+    private void assertElementDisplayed(By element) {
+        assertTrue(driver.findElement(element).isDisplayed());
     }
 }
